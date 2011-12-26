@@ -1,0 +1,23 @@
+@import "blueprint/reset";
+@include blueprint-global-reset;
+@import "blueprint/typography";
+@include blueprint-typography;
+@import "blueprint/grid";
+
+@mixin base {
+  $background: blue !default;
+
+  #container {
+    @include container;
+  }
+
+  #content {
+    @include column(16);
+
+    background: $background;
+  }
+
+  #sidebar {
+    @include column(8);
+  }
+}
