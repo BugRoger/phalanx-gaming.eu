@@ -1,4 +1,4 @@
-  </div><!--end content-->
+  </div><!--end background-wrapper-->
 	<div id="footer">
 		<p>
 			<a href="http://wordpress.org/" rel="generator">Proudly powered by WordPress</a>

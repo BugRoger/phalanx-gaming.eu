@@ -1,6 +1,9 @@
 $background: red;
+$theme-background-image: "swtor_bg0.jpg";
+$theme-header-image:     "swtor_header.png";
+$theme-main-color: #06c;
 
-body.category-swtor {
+.category-swtor {
   @include base;
 }
 

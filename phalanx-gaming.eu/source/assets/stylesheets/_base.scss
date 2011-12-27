@@ -3,21 +3,89 @@
 @import "blueprint/typography";
 @include blueprint-typography;
 @import "blueprint/grid";
+@import "compass/css3";
 
 @mixin base {
-  $background: blue !default;
+  $theme-background-image: "wow_bg0.jpg" !default;
+  $theme-header-image: "wow_header.png" !default;
+  $theme-color: #fff !default;
+
+  $theme-main-color: #900 !default;
+
+  #background-wrapper { 
+    @include background-size(cover);
+    background: url(images/#{$theme-background-image}) no-repeat center center fixed;
+  }
 
   #container {
     @include container;
+    @include box-shadow(0px 0px 10px 2px rgba(0,0,0,0.5));
+
+    background: rgba(0, 0, 0, 0.75);
+    color: $theme-color;
   }
+
+  header {
+    background: url(images/#{$theme-header-image}) no-repeat top left;
+    height: 100px;
+  }
+
+  nav {
+    $a: scale-color($theme-main-color, $lightness: -95%);
+    $b: scale-color($theme-main-color, $lightness: -75%);
+    $c: scale-color($theme-main-color, $lightness: -65%);
+    $d: transparentize(#fff, 0.5);
+
+    @include background-image(linear-gradient(color-stops($a 0%, $b 5%, $c 95%, $a 100%)));
+    @include box-shadow(0px 0px 10px 2px transparentize($theme-main-color, 0.75));
+
+    ul {
+      @include clearfix;
+
+      line-height: 36px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+
+      li {
+        border-right: 1px solid $a;
+        border-left: 1px solid $c;
+        float: left;
+        padding: 0 20px 0 20px;
+
+        &:hover {
+          background: $d; 
+        }
+
+        a {
+          color: #fff;
+          font-weight: bold;
+          text-decoration: none;
+        }
+      }
+    }
+}
 
   #content {
     @include column(16);
 
-    background: $background;
+    .inner {
+      padding: 0 20px 0 20px;
+    }
   }
 
   #sidebar {
     @include column(8);
+    @include last;
+
+    .widget {
+      @include border-radius(5px);
+
+      background: transparentize($theme-main-color, 0.75);
+      border: 2px solid transparentize($theme-main-color, 0.90);
+    }
   }
 }
+
+
+
